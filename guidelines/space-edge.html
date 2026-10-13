@@ -1,0 +1,13 @@
+<!-- @dsCard group="Spacing" viewport="700x160" name="Edges & cuts" subtitle="Radius 0 (max 2px). Chamfer 12px. Dashed cut 4/3. Fiducial corner brackets 18px." -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>
+body{padding:16px;background:var(--surface-primary);color:var(--text-primary)}
+.row{display:flex;gap:8px}.col{display:grid;gap:8px}
+.mono{font-family:var(--font-mono);font-size:var(--text-meta);letter-spacing:var(--track-stamp);text-transform:uppercase;color:var(--text-secondary);font-variant-numeric:tabular-nums}
+.sw{flex:1;border:var(--hairline) solid var(--border-strong);background:var(--surface-elevated)}
+.chip{height:56px;border-bottom:var(--hairline) solid var(--border-default)}
+.meta{padding:8px 10px;display:grid;gap:2px}.meta b{font-family:var(--font-mono);font-size:10px;letter-spacing:var(--track-stamp);font-weight:500;color:var(--text-primary)}.meta i{font-style:normal;font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;color:var(--text-muted)}
+</style></head><body><div class="row" style="height:120px;align-items:stretch">
+<div style="flex:1;border:var(--hairline) solid var(--border-strong);display:grid;place-items:end start;padding:8px"><span class="mono">radius 0</span></div>
+<div style="flex:1;background:var(--signal-primary);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);display:grid;place-items:end start;padding:8px"><span class="mono" style="color:var(--signal-primary-fg)">chamfer 12</span></div>
+<div style="flex:1;border:var(--hairline) dashed var(--text-primary);outline:var(--hairline) dashed var(--text-primary);outline-offset:5px;margin:6px;display:grid;place-items:end start;padding:8px"><span class="mono">dashed cut</span></div>
+<div style="flex:1;position:relative;display:grid;place-items:center"><i style="position:absolute;left:0;top:0;width:18px;height:18px;border-left:1px solid var(--text-primary);border-top:1px solid var(--text-primary)"></i><i style="position:absolute;right:0;top:0;width:18px;height:18px;border-right:1px solid var(--text-primary);border-top:1px solid var(--text-primary)"></i><i style="position:absolute;left:0;bottom:0;width:18px;height:18px;border-left:1px solid var(--text-primary);border-bottom:1px solid var(--text-primary)"></i><i style="position:absolute;right:0;bottom:0;width:18px;height:18px;border-right:1px solid var(--text-primary);border-bottom:1px solid var(--text-primary)"></i><span class="mono">fiducial 18</span></div></div></body></html>

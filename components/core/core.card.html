@@ -1,0 +1,28 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Core controls" subtitle="Button · Stamp · SegmentedControl · Meter · StatusList · KeyValue · Toast" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{padding:16px}.lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin:0 0 6px}.g{display:grid;gap:16px}</style></head><body><div id="root"></div>
+<script type="text/babel">
+const { Button, Stamp, SegmentedControl, Meter, KeyValue, StatusList, Toast, Heading, Label, CommandHeader, SectionHead, Plate, Corners, GridField, CoordBlock, UnitId, Mark, Lockup, HudPanel, SpecSheet, PackPanel, Micrographic } = window.NeoIndustrialDesignSystem_fae892;
+
+function App(){
+  const [atmos,setAtmos]=React.useState("field"); const [flags,setFlags]=React.useState(["Grid"]);
+  const [rows]=React.useState([{id:"G-01",name:"Survey unit",state:"online"},{id:"G-03",name:"Reserve",state:"standby"},{id:"G-04",name:"Thermal",state:"degraded"},{id:"G-05",name:"Remote",state:"offline"}]);
+  return <div className="g">
+    <div><p className="lbl">Button · solid / ghost / ink / warn / offline / selected / disabled / sm</p>
+      <div style={{display:"flex",gap:8,flexWrap:"wrap",alignItems:"center"}}><Button>Engage design ops</Button><Button variant="ghost">Field report</Button><Button variant="ink">System online</Button><Button variant="warn">Degraded</Button><Button variant="offline">Offline</Button><Button variant="ghost" selected>Selected</Button><Button disabled>Disabled</Button><Button size="sm" variant="ghost">Export HTML</Button></div></div>
+    <div><p className="lbl">Stamp · ghost / solid / online / warn / alert / ink / offline · sm</p>
+      <div style={{display:"flex",gap:8,flexWrap:"wrap",alignItems:"center"}}><Stamp>Status: Standby</Stamp><Stamp tone="solid">Target locked</Stamp><Stamp tone="online">Link stable</Stamp><Stamp tone="warn">Degraded</Stamp><Stamp tone="alert">Alert</Stamp><Stamp tone="ink">Rev 1.4</Stamp><Stamp tone="offline">Offline</Stamp><Stamp size="sm" tone="solid">Active</Stamp></div></div>
+    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16}}>
+      <div><p className="lbl">SegmentedControl · single / multiple</p><div style={{display:"flex",gap:8,flexWrap:"wrap"}}><SegmentedControl options={[{value:"field",label:"Field"},{value:"fab",label:"Fabrication"}]} value={atmos} onChange={setAtmos}/><SegmentedControl multiple options={["Grid","Signal","Anno"]} value={flags} onChange={setFlags}/></div>
+        <p className="lbl" style={{marginTop:16}}>Meter · signal / warn / active</p><div className="g" style={{gap:10}}><Meter label="Load" value={78}/><Meter label="Thermal" value={41} tone="warn"/><Meter label="Link" value={96} tone="active"/></div></div>
+      <div><p className="lbl">StatusList</p><StatusList rows={rows}/></div>
+    </div>
+    <div><p className="lbl">KeyValue · 4 columns</p><KeyValue columns={4} items={[{key:"Mass",value:"12.4 kg"},{key:"Voltage",value:"48 VDC"},{key:"Duty",value:"Continuous"},{key:"Env",value:"IP65 / −20–55°"}]}/></div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script></body></html>

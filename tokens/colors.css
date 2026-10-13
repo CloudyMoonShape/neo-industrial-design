@@ -1,0 +1,81 @@
+/* SPEC/NI-04 — Color
+   Rule: ONE high-visibility signal color + black / charcoal / paper. Never add a second accent.
+   Primitives are paint. Components consume semantic tokens only. */
+:root {
+  /* ── primitives: neutrals ── */
+  --ni-black: #0B0B0B;
+  --ni-ink: #101010;
+  --ni-charcoal: #161616;
+  --ni-steel: #2B2B2B;
+  --ni-white: #F6F5F1;
+  --ni-paper: #F3EEE2;
+  --ni-cream: #EDE6D2;
+  --ni-sand: #C9B48A;
+  --ni-fog: #B7B3A8;
+  --ni-mute: #7B776E;
+  /* ── primitives: signal ── */
+  --ni-safety: #FF4C00;   /* shop-floor orange — the only accent */
+  --ni-safety-2: #FF7A18; /* hot edge, hover only */
+  --ni-amber: #E39B24;    /* metering / degraded */
+  --ni-hivis: #F0C14B;    /* high-vis, print only */
+  --ni-rust: #B84312;     /* Fabrication accent */
+  --ni-brown: #2A1A12;    /* Fabrication ink */
+  --ni-nvg: #9CFF6A;      /* night-vision green — online / link stable */
+  --ni-alert: #FF2E2E;
+  --ni-datum: #2E62F0;    /* geodetic blue — datum labels only, never UI */
+  /* ── primitives: hairlines (Field) ── */
+  --ni-line: rgba(246, 245, 241, 0.16);
+  --ni-line-strong: rgba(246, 245, 241, 0.32);
+
+  /* ── semantic: Field atmosphere (default) ── */
+  --surface-primary: var(--ni-black);
+  --surface-secondary: var(--ni-charcoal);
+  --surface-elevated: var(--ni-ink);
+  --surface-paper: var(--ni-paper);
+  --surface-inverse: var(--ni-white);
+  --text-primary: var(--ni-white);
+  --text-secondary: var(--ni-fog);
+  --text-muted: var(--ni-mute);
+  --text-inverse: var(--ni-black);
+  --border-default: var(--ni-line);
+  --border-strong: var(--ni-line-strong);
+  --signal-primary: var(--ni-safety);
+  --signal-primary-hover: var(--ni-safety-2);
+  --signal-primary-fg: var(--ni-black);
+  --signal-active: var(--ni-nvg);
+  --signal-active-fg: var(--ni-black);
+  --signal-warn: var(--ni-amber);
+  --signal-alert: var(--ni-alert);
+  --signal-alert-fg: var(--ni-white);
+  --grid-line: var(--ni-line);
+  --focus-ring: var(--ni-white);
+  --selection-bg: var(--ni-safety);
+  --selection-fg: var(--ni-black);
+}
+
+/* ── semantic: Fabrication atmosphere (oxidized orange + sand + brown) ── */
+[data-atmos="fab"] {
+  --surface-primary: var(--ni-cream);
+  --surface-secondary: var(--ni-sand);
+  --surface-elevated: var(--ni-paper);
+  --surface-paper: var(--ni-paper);
+  --surface-inverse: var(--ni-brown);
+  --text-primary: var(--ni-brown);
+  --text-secondary: #5A4030;
+  --text-muted: #8A6D52;
+  --text-inverse: var(--ni-cream);
+  --border-default: rgba(42, 26, 18, 0.16);
+  --border-strong: rgba(42, 26, 18, 0.32);
+  --signal-primary: var(--ni-rust);
+  --signal-primary-hover: var(--ni-safety);
+  --signal-primary-fg: var(--ni-cream);
+  --signal-active: var(--ni-amber);
+  --signal-active-fg: var(--ni-brown);
+  --signal-warn: var(--ni-amber);
+  --signal-alert: var(--ni-alert);
+  --signal-alert-fg: var(--ni-white);
+  --grid-line: rgba(42, 26, 18, 0.16);
+  --focus-ring: var(--ni-brown);
+  --selection-bg: var(--ni-rust);
+  --selection-fg: var(--ni-cream);
+}

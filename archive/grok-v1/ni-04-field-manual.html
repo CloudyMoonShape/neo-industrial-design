@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-atmos="field" data-signal="on" data-micro="on" data-chroma="color">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SPEC/NI-04 // FIELD MANUAL</title>
+  <meta name="description" content="Neo Industrial design system. Structure first / signal second / decoration last."/>
+  <meta name="theme-color" content="#0B0B0B"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"/>
+  <style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+button,a,input{font:inherit;color:inherit}
+/* ── SPEC/NI-04 tokens ── */
+:root {
+  --ni-black: #0b0b0b;
+  --ni-ink: #101010;
+  --ni-charcoal: #161616;
+  --ni-steel: #2b2b2b;
+  --ni-white: #f6f5f1;
+  --ni-paper: #f3eee2;
+  --ni-cream: #ede6d2;
+  --ni-sand: #c9b48a;
+  --ni-fog: #b7b3a8;
+  --ni-mute: #7b776e;
+  --ni-safety: #ff4c00;
+  --ni-safety-2: #ff7a18;
+  --ni-amber: #e39b24;
+  --ni-hivis: #f0c14b;
+  --ni-rust: #b84312;
+  --ni-brown: #2a1a12;
+  --ni-nvg: #9cff6a;
+  --ni-alert: #ff2e2e;
+  --ni-datum: #2e62f0;
+  --ni-line: rgba(246, 245, 241, 0.16);
+  --ni-line-strong: rgba(246, 245, 241, 0.32);
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-title: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-serif: "Source Serif 4", "Times New Roman", serif;
+  --ni-space-1: 4px;
+  --ni-space-2: 8px;
+  --ni-space-3: 12px;
+  --ni-space-4: 16px;
+  --ni-space-5: 24px;
+  --ni-space-6: 32px;
+  --ni-space-7: 48px;
+  --ni-space-8: 64px;
+  --ni-space-9: 96px;
+  --ni-grid: 48px;
+  --ni-grid-fine: 24px;
+  --ni-radius: 0px;
+  --ni-radius-max: 2px;
+  --ni-hairline: 1px;
+  --ni-dash: 4px 3px;
+  --ni-stripe-bar: 3px;
+  --ni-stripe-gap: 2px;
+  --ni-track-stamp: 0.14em;
+  --ni-track-display: -0.02em;
+  --ni-leading-display: 0.88;
+
+  /* motion [INVENTED] */
+  --motion-fast: 80ms;
+  --motion-base: 140ms;
+  --motion-slow: 220ms;
+  --ease-mechanical: cubic-bezier(0.2, 0, 0, 1);
+  --motion-quick: var(--motion-base);
+  --ease-mech: var(--ease-mechanical);
+
+  /* semantic — Field default [INVENTED] */
+  --surface-primary: var(--ni-black);
+  --surface-secondary: var(--ni-charcoal);
+  --surface-elevated: var(--ni-ink);
+  --surface-paper: var(--ni-paper);
+  --text-primary: var(--ni-white);
+  --text-secondary: var(--ni-fog);
+  --text-muted: var(--ni-mute);
+  --border-default: var(--ni-line);
+  --border-strong: var(--ni-line-strong);
+  --signal-primary: var(--ni-safety);
+  --signal-primary-fg: var(--ni-black);
+  --signal-active: var(--ni-nvg);
+  --signal-alert: var(--ni-alert);
+  --signal-warn: var(--ni-amber);
+
+  --bg: var(--surface-primary);
+  --bg-2: var(--surface-elevated);
+  --bg-3: var(--surface-secondary);
+  --fg: var(--text-primary);
+  --fg-dim: var(--text-secondary);
+  --fg-mute: var(--text-muted);
+  --line: var(--border-default);
+  --line-strong: var(--border-strong);
+  --accent: var(--signal-primary);
+  --accent-2: var(--ni-safety-2);
+  --accent-fg: var(--signal-primary-fg);
+  --panel: var(--surface-secondary);
+  --stamp-fg: var(--signal-primary-fg);
+  --hivis: var(--signal-active);
+}
+
+[data-atmos="field"] {
+  --surface-primary: var(--ni-black);
+  --surface-secondary: var(--ni-charcoal);
+  --surface-elevated: var(--ni-ink);
+  --surface-paper: var(--ni-paper);
+  --text-primary: var(--ni-white);
+  --text-secondary: var(--ni-fog);
+  --text-muted: var(--ni-mute);
+  --border-default: var(--ni-line);
+  --border-strong: var(--ni-line-strong);
+  --signal-primary: var(--ni-safety);
+  --signal-primary-fg: var(--ni-black);
+  --signal-active: var(--ni-nvg);
+  --signal-alert: var(--ni-alert);
+  --signal-warn: var(--ni-amber);
+  --bg: var(--surface-primary);
+  --bg-2: var(--surface-elevated);
+  --bg-3: var(--surface-secondary);
+  --fg: var(--text-primary);
+  --fg-dim: var(--text-secondary);
+  --fg-mute: var(--text-muted);
+  --line: var(--border-default);
+  --line-strong: var(--border-strong);
+  --accent: var(--signal-primary);
+  --accent-2: var(--ni-safety-2);
+  --accent-fg: var(--signal-primary-fg);
+  --panel: var(--surface-secondary);
+  --stamp-fg: var(--signal-primary-fg);
+  --hivis: var(--signal-active);
+}
+
+[data-atmos="fab"] {
+  --surface-primary: var(--ni-cream);
+  --surface-secondary: var(--ni-sand);
+  --surface-elevated: var(--ni-paper);
+  --surface-paper: var(--ni-paper);
+  --text-primary: var(--ni-brown);
+  --text-secondary: #5a4030;
+  --text-muted: #8a6d52;
+  --border-default: rgba(42, 26, 18, 0.16);
+  --border-strong: rgba(42, 26, 18, 0.32);
+  --signal-primary: var(--ni-rust);
+  --signal-primary-fg: var(--ni-cream);
+  --signal-active: var(--ni-amber);
+  --signal-alert: var(--ni-alert);
+  --signal-warn: var(--ni-amber);
+  --bg: var(--surface-primary);
+  --bg-2: var(--surface-elevated);
+  --bg-3: var(--surface-secondary);
+  --fg: var(--text-primary);
+  --fg-dim: var(--text-secondary);
+  --fg-mute: var(--text-muted);
+  --line: var(--border-default);
+  --line-strong: var(--border-strong);
+  --accent: var(--signal-primary);
+  --accent-2: var(--ni-safety);
+  --accent-fg: var(--signal-primary-fg);
+  --panel: var(--surface-paper);
+  --stamp-fg: var(--signal-primary-fg);
+  --hivis: var(--signal-active);
+}
+
+/* Validation: structure must hold without hue */
+html[data-chroma="gray"],
+[data-chroma="gray"] {
+  --ni-safety: #9a9a9a;
+  --ni-safety-2: #b3b3b3;
+  --ni-amber: #8a8a8a;
+  --ni-hivis: #c4c4c4;
+  --ni-rust: #5c5c5c;
+  --ni-nvg: #c8c8c8;
+  --ni-alert: #6e6e6e;
+  --ni-datum: #7a7a7a;
+  --ni-sand: #b8b8b8;
+  --ni-cream: #e6e6e6;
+  --ni-paper: #ececec;
+  --ni-brown: #161616;
+}
+
+html[data-signal="off"],
+[data-signal="off"] {
+  --signal-primary: var(--text-primary);
+  --signal-primary-fg: var(--surface-primary);
+  --signal-active: var(--text-secondary);
+  --signal-alert: var(--text-primary);
+  --signal-warn: var(--text-secondary);
+  --accent: var(--text-primary);
+  --accent-2: var(--text-secondary);
+  --accent-fg: var(--surface-primary);
+  --stamp-fg: var(--surface-primary);
+  --hivis: var(--text-secondary);
+}
+
+html[data-micro="off"] .ni-anno,
+html[data-micro="off"] .ni-corners,
+html[data-micro="off"] .ni-hero-contour,
+html[data-micro="off"] .ni-hud-beam,
+html[data-micro="off"] .ni-pack-cut,
+html[data-micro="off"] .mg-index,
+html[data-micro="off"] .mg-scan,
+html[data-micro="off"] .mg-scanlines,
+html[data-micro="off"] .mg-cross,
+html[data-micro="off"] .mg-barcode,
+html[data-micro="off"] .mg-cut,
+[data-micro="off"] .ni-anno,
+[data-micro="off"] .ni-corners,
+[data-micro="off"] .ni-hero-contour,
+[data-micro="off"] .ni-hud-beam,
+[data-micro="off"] .ni-pack-cut,
+[data-micro="off"] .mg-index,
+[data-micro="off"] .mg-scan,
+[data-micro="off"] .mg-scanlines,
+[data-micro="off"] .mg-cross,
+[data-micro="off"] .mg-barcode,
+[data-micro="off"] .mg-cut {
+  display: none !important;
+}
+
+[data-micro="off"] .ni-mg-stage {
+  min-height: 48px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg, var(--ni-black));
+  color: var(--fg, var(--ni-white));
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+/* ── layout ── */
+.ni-page {
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+}
+
+.ni-wrap {
+  width: min(1280px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+@media (min-width: 720px) {
+  .ni-wrap {
+    width: min(1280px, calc(100% - 48px));
+  }
+}
+
+/* ── command header ── */
+.ni-cmd {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  border-bottom: var(--ni-hairline) solid var(--line-strong);
+  backdrop-filter: none;
+}
+
+.ni-cmd-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px 16px;
+  padding: 10px 0 8px;
+  align-items: center;
+}
+
+@media (max-width: 899px) {
+  .ni-cmd-meta span:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .ni-cmd-row {
+    grid-template-columns: auto 1fr auto;
+  }
+}
+
+.ni-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+
+.ni-brand-code {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.ni-brand-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+.ni-cmd-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.ni-cmd-meta b {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.ni-cmd-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-start;
+}
+
+@media (min-width: 900px) {
+  .ni-cmd-actions {
+    justify-content: flex-end;
+  }
+}
+
+.ni-seg {
+  display: inline-flex;
+  border: var(--ni-hairline) solid var(--line-strong);
+}
+
+.ni-seg button {
+  background: transparent;
+  border: 0;
+  color: var(--fg-dim);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  padding: 8px 10px;
+  min-height: 36px;
+  transition: background var(--motion-quick) var(--ease-mech),
+    color var(--motion-quick) var(--ease-mech);
+}
+
+.ni-seg button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.ni-nav {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  border-top: var(--ni-hairline) solid var(--line);
+  scrollbar-width: none;
+}
+
+.ni-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.ni-nav a {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg-dim);
+  padding: 10px 14px;
+  white-space: nowrap;
+  border-right: var(--ni-hairline) solid var(--line);
+  transition: color var(--motion-quick) var(--ease-mech);
+}
+
+.ni-nav a:hover,
+.ni-nav a:focus-visible {
+  color: var(--accent);
+}
+
+/* ── type helpers ── */
+.ni-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  color: var(--signal-primary);
+}
+
+.ni-h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(56px, 12vw, 128px);
+  line-height: var(--ni-leading-display);
+  letter-spacing: var(--ni-track-display);
+  text-transform: uppercase;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.ni-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.ni-h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.ni-body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--fg);
+  max-width: 62ch;
+}
+
+.ni-body.dim,
+.ni-dim {
+  color: var(--fg-dim);
+}
+
+.ni-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── stamps ── */
+.ni-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  padding: 6px 10px;
+  line-height: 1;
+  border: var(--ni-hairline) solid currentColor;
+  white-space: nowrap;
+}
+
+.ni-stamp.solid {
+  background: var(--accent);
+  color: var(--stamp-fg);
+  border-color: var(--accent);
+}
+
+.ni-stamp.ghost {
+  background: transparent;
+  color: var(--fg);
+  border-color: var(--line-strong);
+}
+
+.ni-stamp.alert {
+  background: var(--signal-alert);
+  color: var(--ni-white);
+  border-color: var(--signal-alert);
+}
+
+.ni-stamp.nvg {
+  background: var(--signal-active);
+  color: var(--ni-black);
+  border-color: var(--signal-active);
+}
+
+.ni-stamp.warn {
+  background: transparent;
+  color: var(--signal-warn);
+  border-color: var(--signal-warn);
+}
+
+.ni-stamp.ink {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+/* ── buttons ── */
+.ni-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  border: var(--ni-hairline) solid var(--signal-primary);
+  background: var(--signal-primary);
+  color: var(--signal-primary-fg);
+  text-decoration: none;
+  border-radius: var(--ni-radius);
+  transition: filter var(--motion-base) var(--ease-mechanical),
+    transform var(--motion-fast) var(--ease-mechanical),
+    background var(--motion-base) var(--ease-mechanical),
+    border-color var(--motion-base) var(--ease-mechanical),
+    opacity var(--motion-base) var(--ease-mechanical);
+}
+
+.ni-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.ni-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.ni-btn.ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.ni-btn.ghost:hover:not(:disabled) {
+  border-color: var(--text-primary);
+  filter: none;
+}
+
+.ni-btn.ink {
+  background: var(--text-primary);
+  color: var(--surface-primary);
+  border-color: var(--text-primary);
+}
+
+.ni-btn.is-selected {
+  box-shadow: inset 0 0 0 1px var(--text-primary);
+}
+
+.ni-btn.warn {
+  background: transparent;
+  color: var(--signal-warn);
+  border-color: var(--signal-warn);
+}
+
+.ni-btn.offline {
+  background: transparent;
+  color: var(--text-muted);
+  border-color: var(--border-default);
+  border-style: dashed;
+}
+
+.ni-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+/* ── plates / sections ── */
+.ni-section {
+  padding: 64px 0 80px;
+  border-top: var(--ni-hairline) solid var(--line);
+}
+
+.ni-sec-head {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: var(--ni-hairline) dashed var(--line-strong);
+}
+
+@media (min-width: 800px) {
+  .ni-sec-head {
+    grid-template-columns: 160px 1fr auto;
+    align-items: end;
+  }
+}
+
+.ni-sec-id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--ni-track-stamp);
+  color: var(--signal-primary);
+}
+
+.ni-plate {
+  border: var(--ni-hairline) solid var(--line-strong);
+  background: var(--bg-2);
+  padding: 16px;
+}
+
+.ni-plate-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: var(--ni-hairline) solid var(--line);
+}
+
+.ni-plate-head span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  color: var(--fg-mute);
+}
+
+.ni-grid-2,
+.ni-grid-3,
+.ni-grid-4 {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 700px) {
+  .ni-grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ni-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .ni-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .ni-grid-4.swatches {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* ── hero ── */
+.ni-hero {
+  position: relative;
+  min-height: auto;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: var(--ni-hairline) solid var(--line-strong);
+}
+
+.ni-hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: var(--ni-grid) var(--ni-grid);
+  opacity: 0;
+  transition: opacity var(--motion-fast) var(--ease-mech);
+}
+
+.ni-page.grid-on .ni-hero-grid,
+.ni-page.grid-on .ni-grid-demo {
+  opacity: 1;
+}
+
+.ni-hero-contour {
+  position: absolute;
+  inset: 8% 6% 18% 38%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.ni-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: 36px 0 48px;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+@media (min-width: 900px) {
+  .ni-hero,
+  .ni-hero-inner {
+    min-height: calc(100dvh - 96px);
+  }
+}
+
+.ni-corners {
+  position: absolute;
+  inset: 16px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ni-corners i {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--fg);
+  border-style: solid;
+  border-width: 0;
+}
+
+.ni-corners i:nth-child(1) {
+  top: 0;
+  left: 0;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+.ni-corners i:nth-child(2) {
+  top: 0;
+  right: 0;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+.ni-corners i:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+.ni-corners i:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+.ni-hero-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ni-hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(64px, 14vw, 148px);
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin: 12px 0 20px;
+}
+
+.ni-hero-foot {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 800px) {
+  .ni-hero-foot {
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+  }
+}
+
+.ni-coord {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  line-height: 1.7;
+  font-variant-numeric: tabular-nums;
+}
+
+.ni-coord b {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.ni-unit-lg {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.8;
+  letter-spacing: 0.02em;
+  text-align: right;
+}
+
+/* ── color swatches ── */
+.ni-swatch {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: var(--ni-hairline) solid var(--line-strong);
+  background: var(--bg-2);
+  padding: 0;
+  overflow: hidden;
+  color: var(--fg);
+  transition: border-color var(--motion-quick) var(--ease-mech);
+}
+
+.ni-swatch:hover,
+.ni-swatch:focus-visible {
+  border-color: var(--accent);
+}
+
+.ni-swatch-chip {
+  height: 72px;
+  border-bottom: var(--ni-hairline) solid var(--line);
+}
+
+.ni-swatch-meta {
+  padding: 10px 12px 12px;
+  display: grid;
+  gap: 2px;
+}
+
+.ni-swatch-meta strong {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ni-track-stamp);
+  font-weight: 500;
+}
+
+.ni-swatch-meta em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--fg-mute);
+}
+
+/* ── type scale ── */
+.ni-type-row {
+  display: grid;
+  gap: 8px;
+  padding: 16px 0;
+  border-bottom: var(--ni-hairline) solid var(--line);
+}
+
+@media (min-width: 800px) {
+  .ni-type-row {
+    grid-template-columns: 180px 1fr;
+    align-items: end;
+  }
+}
+
+.ni-space-row {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ni-space-unit {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.ni-space-unit i {
+  display: block;
+  background: var(--accent);
+  width: var(--u, 8px);
+  height: 32px;
+}
+
+.ni-space-unit span {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--fg-mute);
+}
+
+.ni-grid-demo {
+  height: 180px;
+  border: var(--ni-hairline) solid var(--line-strong);
+  background-image: linear-gradient(to right, var(--line-strong) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-strong) 1px, transparent 1px);
+  background-size: var(--ni-grid) var(--ni-grid);
+  opacity: 0.85;
+  position: relative;
+}
+
+.ni-grid-demo::after {
+  content: "48 × 48";
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ni-track-stamp);
+  color: var(--fg-dim);
+}
+
+/* ── micrographics ── */
+.ni-mg-stage {
+  min-height: 140px;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  border: var(--ni-hairline) solid var(--line);
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mg-index {
+  width: 70%;
+  height: 72px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--fg) 0 var(--ni-stripe-bar),
+    transparent var(--ni-stripe-bar) calc(var(--ni-stripe-bar) + var(--ni-stripe-gap))
+  );
+}
+
+.mg-scan {
+  width: 80%;
+  height: 56px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--fg) 0 2px,
+    transparent 2px 6px
+  );
+  opacity: 0.85;
+}
+
+.mg-octagon {
+  width: 88px;
+  height: 88px;
+  background: var(--fg);
+  clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+}
+
+.mg-chamfer {
+  width: 120px;
+  height: 64px;
+  background: var(--accent);
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+}
+
+.mg-scanlines {
+  width: 100%;
+  height: 100%;
+  min-height: 140px;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0 3px,
+    color-mix(in srgb, var(--fg) 32%, transparent) 3px 4px
+  );
+}
+
+.mg-cut {
+  width: 78%;
+  height: 72px;
+  border: 1px dashed var(--fg);
+  outline: 1px dashed var(--fg);
+  outline-offset: 6px;
+}
+
+.mg-cross {
+  width: 84px;
+  height: 84px;
+  position: relative;
+}
+
+.mg-cross::before,
+.mg-cross::after {
+  content: "";
+  position: absolute;
+  background: var(--accent);
+}
+
+.mg-cross::before {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.mg-cross::after {
+  top: 50%;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.mg-cross b {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--fg);
+}
+
+.mg-cross b:nth-of-type(1) {
+  top: 0;
+  left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+.mg-cross b:nth-of-type(2) {
+  top: 0;
+  right: 0;
+  border-left: 0;
+  border-bottom: 0;
+}
+.mg-cross b:nth-of-type(3) {
+  bottom: 0;
+  left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+.mg-cross b:nth-of-type(4) {
+  bottom: 0;
+  right: 0;
+  border-left: 0;
+  border-top: 0;
+}
+
+.mg-barcode {
+  display: flex;
+  align-items: stretch;
+  height: 64px;
+  gap: 0;
+}
+
+.mg-barcode i {
+  display: block;
+  background: var(--fg);
+  height: 100%;
+}
+
+/* ── lockup ── */
+.ni-lockup {
+  border: var(--ni-hairline) solid var(--fg);
+  background: var(--bg);
+}
+
+.ni-lockup-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  border-bottom: var(--ni-hairline) solid var(--fg);
+}
+
+.ni-lockup-bar.bottom {
+  border-bottom: 0;
+  border-top: var(--ni-hairline) solid var(--fg);
+}
+
+.ni-lockup-body {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 20px 16px;
+}
+
+.ni-mark {
+  width: 72px;
+  height: 72px;
+}
+
+.ni-lockup-word {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(36px, 7vw, 64px);
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.ni-lockup-word small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--ni-track-stamp);
+  margin-top: 8px;
+  color: var(--fg-dim);
+}
+
+/* ── HUD ── */
+.ni-hud {
+  position: relative;
+  min-height: 320px;
+  background: var(--ni-black);
+  color: var(--ni-white);
+  overflow: hidden;
+  border: var(--ni-hairline) solid var(--ni-steel);
+}
+
+.ni-hud .ni-hero-grid {
+  opacity: 1;
+  background-image: linear-gradient(to right, rgba(246, 245, 241, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(246, 245, 241, 0.1) 1px, transparent 1px);
+}
+
+.ni-hud-beam {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 40%, rgba(156, 255, 106, 0.12), transparent 55%);
+  pointer-events: none;
+}
+
+.ni-hud-inner {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ni-hud-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(48px, 8vw, 80px);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin: 24px 0;
+}
+
+.ni-tel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(246, 245, 241, 0.7);
+  line-height: 1.8;
+  font-variant-numeric: tabular-nums;
+}
+
+.ni-tel .ok {
+  color: var(--signal-active);
+}
+
+/* ── spec sheet ── */
+.ni-spec {
+  display: grid;
+  border: var(--ni-hairline) solid var(--line-strong);
+  background: var(--bg-2);
+}
+
+@media (min-width: 800px) {
+  .ni-spec {
+    grid-template-columns: 180px 1fr;
+  }
+}
+
+.ni-spec-rail {
+  padding: 20px 16px;
+  border-bottom: var(--ni-hairline) solid var(--line-strong);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (min-width: 800px) {
+  .ni-spec-rail {
+    border-bottom: 0;
+    border-right: var(--ni-hairline) solid var(--line-strong);
+  }
+}
+
+.ni-spec-body {
+  padding: 20px;
+  display: grid;
+  gap: 16px;
+}
+
+.ni-meter {
+  display: grid;
+  gap: 6px;
+}
+
+.ni-meter-track {
+  height: 8px;
+  background: var(--line);
+  position: relative;
+}
+
+.ni-meter-track > i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+
+.ni-kv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: var(--ni-hairline) solid var(--line);
+}
+
+.ni-kv div {
+  padding: 10px 12px;
+  border-bottom: var(--ni-hairline) solid var(--line);
+  border-right: var(--ni-hairline) solid var(--line);
+}
+
+.ni-kv dt {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: var(--ni-track-stamp);
+  color: var(--fg-mute);
+  text-transform: uppercase;
+}
+
+.ni-kv dd {
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+/* ── packaging ── */
+.ni-pack {
+  position: relative;
+  background: var(--signal-primary);
+  color: var(--signal-primary-fg);
+  min-height: 320px;
+  padding: 28px 24px;
+  overflow: hidden;
+}
+
+.ni-pack-cut {
+  position: absolute;
+  inset: 14px;
+  border: 1px dashed color-mix(in srgb, var(--signal-primary-fg) 55%, transparent);
+  pointer-events: none;
+}
+
+.ni-pack-type {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(80px, 18vw, 180px);
+  line-height: 0.78;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin: 24px 0 8px;
+}
+
+.ni-pack .ni-mono {
+  color: color-mix(in srgb, var(--signal-primary-fg) 70%, transparent);
+}
+
+/* ── apparel ── */
+.ni-jacket-wrap {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 800px) {
+  .ni-jacket-wrap {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.ni-jacket {
+  position: relative;
+  min-height: 420px;
+  background: var(--ni-steel);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.ni-jacket-shape {
+  width: min(300px, 78%);
+  height: 380px;
+  background: #141414;
+  clip-path: polygon(
+    32% 7%,
+    42% 1%,
+    58% 1%,
+    68% 7%,
+    80% 14%,
+    100% 26%,
+    88% 40%,
+    80% 32%,
+    80% 100%,
+    20% 100%,
+    20% 32%,
+    12% 40%,
+    0 26%,
+    20% 14%
+  );
+  position: relative;
+}
+
+.ni-jacket-print {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 64px;
+  letter-spacing: -0.04em;
+  color: var(--ni-white);
+  line-height: 0.8;
+  text-align: center;
+}
+
+.ni-sleeve {
+  position: absolute;
+  right: 6%;
+  top: 28%;
+  width: 54px;
+  padding: 6px 4px;
+  background: var(--signal-primary);
+  color: var(--signal-primary-fg);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ── voice / rules ── */
+.ni-voice-list {
+  display: grid;
+  gap: 0;
+  border: var(--ni-hairline) solid var(--line-strong);
+}
+
+.ni-voice-list li {
+  list-style: none;
+  padding: 12px 16px;
+  border-bottom: var(--ni-hairline) solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ni-voice-list li:last-child {
+  border-bottom: 0;
+}
+
+.ni-do,
+.ni-dont {
+  min-height: 220px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ni-do {
+  background: var(--bg-2);
+  border: var(--ni-hairline) solid var(--line-strong);
+}
+
+.ni-dont {
+  background: #1a1210;
+  color: #e8dcd0;
+  border: var(--ni-hairline) solid #3a2018;
+}
+
+.ni-dont .bad-card {
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  color: white;
+  font-family: Georgia, serif;
+}
+
+/* ── root dump ── */
+.ni-code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.55;
+  letter-spacing: 0;
+  text-transform: none;
+  background: var(--ni-ink);
+  color: var(--ni-paper);
+  border: var(--ni-hairline) solid var(--ni-steel);
+  padding: 20px;
+  overflow: auto;
+  max-height: 480px;
+  white-space: pre;
+  tab-size: 2;
+}
+
+.ni-toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 60;
+  background: var(--ni-safety);
+  color: var(--ni-black);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--ni-track-stamp);
+  text-transform: uppercase;
+  padding: 10px 14px;
+  pointer-events: none;
+}
+
+/* ── footer ── */
+.ni-foot {
+  padding: 48px 0 64px;
+  border-top: var(--ni-hairline) solid var(--line-strong);
+}
+
+.ni-foot-line {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(28px, 6vw, 56px);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+
+/* ── misc ── */
+.ni-rule {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+  margin: 0;
+}
+
+.ni-accept {
+  margin-top: 32px;
+  padding: 20px;
+  border: var(--ni-hairline) solid var(--border-strong);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* ── provenance ── */
+.ni-src {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 6px;
+  border: var(--ni-hairline) solid var(--border-strong);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.ni-src.observed {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+.ni-src.derived {
+  color: var(--text-secondary);
+}
+
+.ni-src.invented {
+  color: var(--text-muted);
+  border-style: dashed;
+}
+
+/* ── system rows / states ── */
+.ni-sys {
+  border: var(--ni-hairline) solid var(--border-strong);
+}
+
+.ni-sys-row {
+  display: grid;
+  grid-template-columns: 14px 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border-bottom: var(--ni-hairline) solid var(--border-default);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  min-height: 44px;
+}
+
+.ni-sys-row:last-child {
+  border-bottom: 0;
+}
+
+.ni-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--text-muted);
+}
+
+.ni-sys-row[data-state="online"] .ni-dot,
+.ni-sys-row[data-state="active"] .ni-dot {
+  background: var(--signal-active);
+}
+
+.ni-sys-row[data-state="standby"] .ni-dot {
+  background: var(--text-secondary);
+}
+
+.ni-sys-row[data-state="degraded"] .ni-dot,
+.ni-sys-row[data-state="warning"] .ni-dot {
+  background: var(--signal-warn);
+}
+
+.ni-sys-row[data-state="offline"] .ni-dot {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--text-muted);
+}
+
+.ni-sys-row[data-state="offline"] {
+  color: var(--text-muted);
+}
+
+.ni-btn-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ni-motion-lock {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+.ni-motion-lock .wipe {
+  position: absolute;
+  inset: 0;
+  background: var(--text-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.ni-motion-lock.is-on .wipe {
+  animation: ni-wipe var(--motion-slow) var(--ease-mechanical) 1;
+}
+
+@keyframes ni-wipe {
+  from {
+    transform: scaleX(0);
+    opacity: 0.35;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+.ni-check {
+  display: grid;
+  gap: 0;
+  border: var(--ni-hairline) solid var(--border-strong);
+}
+
+.ni-check li {
+  list-style: none;
+  padding: 12px 16px;
+  border-bottom: var(--ni-hairline) solid var(--border-default);
+  display: grid;
+  gap: 4px;
+}
+
+.ni-check li:last-child {
+  border-bottom: 0;
+}
+
+.ni-check b {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.ni-check span {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.ni-principle {
+  margin-top: 24px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(18px, 3vw, 28px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media print {
+  .ni-cmd {
+    position: static;
+  }
+  .ni-cmd-actions,
+  .ni-toast {
+    display: none !important;
+  }
+  .ni-page {
+    background: white;
+    color: black;
+  }
+}
+
+  </style>
+</head>
+<body>
+<div class="ni-page grid-on" id="page">
+  <header class="ni-cmd">
+    <div class="ni-wrap">
+      <div class="ni-cmd-row">
+        <div class="ni-brand">
+          <span class="ni-brand-code">SPEC/NI-04</span>
+          <span class="ni-brand-sub">Field Manual</span>
+        </div>
+        <div class="ni-cmd-meta">
+          <span>DATE <b id="clk-date">—</b></span>
+          <span>CLOCK <b id="clk-zulu">—</b></span>
+          <span>STATUS <b>FIELD TESTING</b></span>
+        </div>
+        <div class="ni-cmd-actions">
+          <div class="ni-seg" role="group" aria-label="Atmosphere">
+            <button type="button" data-atmos="field" aria-pressed="true">Field</button>
+            <button type="button" data-atmos="fab" aria-pressed="false">Fabrication</button>
+          </div>
+          <div class="ni-seg" role="group" aria-label="Validation">
+            <button type="button" id="grid-btn" aria-pressed="true">Grid</button>
+            <button type="button" id="btn-signal" aria-pressed="true">Signal</button>
+            <button type="button" id="btn-micro" aria-pressed="true">Anno</button>
+            <button type="button" id="btn-gray" aria-pressed="false">Gray</button>
+          </div>
+        </div>
+      </div>
+      <nav class="ni-nav">
+        <a href="#sec-tokens">01 Tokens</a>
+        <a href="#sec-micro">02 Micrographics</a>
+        <a href="#sec-materials">03 Materials</a>
+        <a href="#sec-states">04 States / Motion</a>
+        <a href="#sec-voice">05 Voice</a>
+        <a href="#sec-validate">06 Validation</a>
+        <a href="#sec-root">07 :root</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="ni-hero">
+    <div class="ni-hero-grid"></div>
+    <div class="ni-corners ni-anno" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="ni-wrap ni-hero-inner">
+      <div class="ni-hero-top">
+        <span class="ni-kicker">REF: [ ORBITAL-SYS-01 ]</span>
+        <span class="ni-stamp ghost">Status: Field Testing</span>
+      </div>
+      <div>
+        <p class="ni-mono" style="margin:0">Design language / Neo Industrial</p>
+        <h1 class="ni-hero-title">Field<br/>Manual</h1>
+        <p class="ni-body" style="max-width:42ch">瑞士网格的纪律 + 工程文件的信息密度 + 美国硬科技的物性感。好看是副作用，可信和可部署才是目的。</p>
+      </div>
+      <div class="ni-hero-foot">
+        <div class="ni-coord"><div><b>DATUM</b> / WGS 84</div></div>
+        <span class="ni-mono">Unit NI-04</span>
+        <div class="ni-unit-lg">G-01</div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="ni-section" id="sec-tokens">
+      <div class="ni-wrap">
+        <div class="ni-sec-head">
+          <span class="ni-sec-id">01 / TOKENS</span>
+          <div>
+            <h2 class="ni-h2">System plate</h2>
+            <p class="ni-body dim" style="margin:8px 0 0">组件只消费 semantic。Primitive 是颜料。Field / Fabrication 换主题时不改组件。</p>
+          </div>
+          <span class="ni-src derived">[Derived]</span>
+        </div>
+        <h3 class="ni-h3" style="margin-bottom:8px">Primitives</h3>
+        <p class="ni-mono dim" style="margin-bottom:16px">[Derived] hex · [Observed] 一强调色 + 黑/炭/米</p>
+        <div class="ni-grid-4 swatches" style="margin-bottom:40px">              <button type="button" class="ni-swatch" data-copy="#0B0B0B" data-id="--ni-black"><div class="ni-swatch-chip" style="background:#0B0B0B"></div><div class="ni-swatch-meta"><strong>--ni-black</strong><em>#0B0B0B · Field 底</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#101010" data-id="--ni-ink"><div class="ni-swatch-chip" style="background:#101010"></div><div class="ni-swatch-meta"><strong>--ni-ink</strong><em>#101010 · 面板</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#161616" data-id="--ni-charcoal"><div class="ni-swatch-chip" style="background:#161616"></div><div class="ni-swatch-meta"><strong>--ni-charcoal</strong><em>#161616 · 抬升面</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#2B2B2B" data-id="--ni-steel"><div class="ni-swatch-chip" style="background:#2B2B2B"></div><div class="ni-swatch-meta"><strong>--ni-steel</strong><em>#2B2B2B · 结构灰</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#F6F5F1" data-id="--ni-white"><div class="ni-swatch-chip" style="background:#F6F5F1"></div><div class="ni-swatch-meta"><strong>--ni-white</strong><em>#F6F5F1 · Field 字</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#F3EEE2" data-id="--ni-paper"><div class="ni-swatch-chip" style="background:#F3EEE2"></div><div class="ni-swatch-meta"><strong>--ni-paper</strong><em>#F3EEE2 · 纸面</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#EDE6D2" data-id="--ni-cream"><div class="ni-swatch-chip" style="background:#EDE6D2"></div><div class="ni-swatch-meta"><strong>--ni-cream</strong><em>#EDE6D2 · Fabrication 底</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#C9B48A" data-id="--ni-sand"><div class="ni-swatch-chip" style="background:#C9B48A"></div><div class="ni-swatch-meta"><strong>--ni-sand</strong><em>#C9B48A · 氧化沙</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#B7B3A8" data-id="--ni-fog"><div class="ni-swatch-chip" style="background:#B7B3A8"></div><div class="ni-swatch-meta"><strong>--ni-fog</strong><em>#B7B3A8 · 次级</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#7B776E" data-id="--ni-mute"><div class="ni-swatch-chip" style="background:#7B776E"></div><div class="ni-swatch-meta"><strong>--ni-mute</strong><em>#7B776E · 注释</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#FF4C00" data-id="--ni-safety"><div class="ni-swatch-chip" style="background:#FF4C00"></div><div class="ni-swatch-meta"><strong>--ni-safety</strong><em>#FF4C00 · 唯一强调</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#B84312" data-id="--ni-rust"><div class="ni-swatch-chip" style="background:#B84312"></div><div class="ni-swatch-meta"><strong>--ni-rust</strong><em>#B84312 · 氧化金属</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#2A1A12" data-id="--ni-brown"><div class="ni-swatch-chip" style="background:#2A1A12"></div><div class="ni-swatch-meta"><strong>--ni-brown</strong><em>#2A1A12 · Fabrication 字</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#9CFF6A" data-id="--ni-nvg"><div class="ni-swatch-chip" style="background:#9CFF6A"></div><div class="ni-swatch-meta"><strong>--ni-nvg</strong><em>#9CFF6A · 在线</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#FF2E2E" data-id="--ni-alert"><div class="ni-swatch-chip" style="background:#FF2E2E"></div><div class="ni-swatch-meta"><strong>--ni-alert</strong><em>#FF2E2E · 告警</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="#E39B24" data-id="--ni-amber"><div class="ni-swatch-chip" style="background:#E39B24"></div><div class="ni-swatch-meta"><strong>--ni-amber</strong><em>#E39B24 · 降级</em></div></button></div>
+        <h3 class="ni-h3" style="margin-bottom:8px">Semantic</h3>
+        <p class="ni-mono dim" style="margin-bottom:16px">[Invented] 可移植层</p>
+        <div class="ni-grid-4 swatches" style="margin-bottom:40px">              <button type="button" class="ni-swatch" data-copy="--surface-primary" data-id="--surface-primary"><div class="ni-swatch-chip" style="background:var(--surface-primary)"></div><div class="ni-swatch-meta"><strong>--surface-primary</strong><em>主表面</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="--surface-elevated" data-id="--surface-elevated"><div class="ni-swatch-chip" style="background:var(--surface-elevated)"></div><div class="ni-swatch-meta"><strong>--surface-elevated</strong><em>面板</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="--text-primary" data-id="--text-primary"><div class="ni-swatch-chip" style="background:var(--text-primary)"></div><div class="ni-swatch-meta"><strong>--text-primary</strong><em>主文</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="--text-secondary" data-id="--text-secondary"><div class="ni-swatch-chip" style="background:var(--text-secondary)"></div><div class="ni-swatch-meta"><strong>--text-secondary</strong><em>次级</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="--signal-primary" data-id="--signal-primary"><div class="ni-swatch-chip" style="background:var(--signal-primary)"></div><div class="ni-swatch-meta"><strong>--signal-primary</strong><em>强调</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="--signal-active" data-id="--signal-active"><div class="ni-swatch-chip" style="background:var(--signal-active)"></div><div class="ni-swatch-meta"><strong>--signal-active</strong><em>在线</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="--signal-warn" data-id="--signal-warn"><div class="ni-swatch-chip" style="background:var(--signal-warn)"></div><div class="ni-swatch-meta"><strong>--signal-warn</strong><em>降级</em></div></button>
+              <button type="button" class="ni-swatch" data-copy="--signal-alert" data-id="--signal-alert"><div class="ni-swatch-chip" style="background:var(--signal-alert)"></div><div class="ni-swatch-meta"><strong>--signal-alert</strong><em>告警</em></div></button></div>
+        <div class="ni-type-row">
+          <div><div class="ni-mono">--font-display</div></div>
+          <div class="ni-h1" style="font-size:56px">FIELD MANUAL</div>
+        </div>
+        <div class="ni-type-row">
+          <div><div class="ni-mono">--font-title</div></div>
+          <div class="ni-h2">OPERATIONAL GRID</div>
+        </div>
+        <div class="ni-type-row">
+          <div><div class="ni-mono">--font-body</div></div>
+          <div class="ni-body">层级只靠字号、间距、对齐。能用一个家族就不要第二装饰体。</div>
+        </div>
+        <div class="ni-type-row">
+          <div><div class="ni-mono">--font-mono</div></div>
+          <div class="ni-mono">STATUS: ACTIVE · UNIT ID: NI-04 · DATUM / WGS 84</div>
+        </div>
+        <div class="ni-plate" style="margin-top:24px">
+          <div class="ni-plate-head"><span>Visible grid</span><span>[Derived] 48px</span></div>
+          <div class="ni-grid-demo"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ni-section" id="sec-micro">
+      <div class="ni-wrap">
+        <div class="ni-sec-head">
+          <span class="ni-sec-id">02 / MICROGRAPHICS</span>
+          <div>
+            <h2 class="ni-h2">Annotation set</h2>
+            <p class="ni-body dim" style="margin:8px 0 0">零件抽屉。密度 Content 60 / System 30 / Micro 10。Hero 最多 3 个家族。普通区块 1–2。</p>
+          </div>
+          <span class="ni-src observed">[Observed]</span>
+        </div>
+        <div class="ni-grid-2">
+          <article class="ni-plate"><div class="ni-plate-head"><span>MG-01 Index bars</span></div><div class="ni-mg-stage"><div class="mg-index"></div></div><p class="ni-mono dim">压缩 / 索引</p></article>
+          <article class="ni-plate"><div class="ni-plate-head"><span>MG-02 Scan bars</span></div><div class="ni-mg-stage"><div class="mg-scan"></div></div><p class="ni-mono dim">跟踪线</p></article>
+          <article class="ni-plate"><div class="ni-plate-head"><span>MG-03 Octagon</span></div><div class="ni-mg-stage"><div class="mg-octagon"></div></div><p class="ni-mono dim">铭牌几何</p></article>
+          <article class="ni-plate"><div class="ni-plate-head"><span>MG-04 Chamfer</span></div><div class="ni-mg-stage"><div class="mg-chamfer"></div></div><p class="ni-mono dim">切角基板</p></article>
+          <article class="ni-plate"><div class="ni-plate-head"><span>MG-05 Scanlines</span></div><div class="ni-mg-stage" style="padding:0"><div class="mg-scanlines"></div></div><p class="ni-mono dim">克制扫描，不做旧</p></article>
+          <article class="ni-plate"><div class="ni-plate-head"><span>MG-06 Dashed cut</span></div><div class="ni-mg-stage"><div class="mg-cut"></div></div><p class="ni-mono dim">未完成 / 裁切</p></article>
+          <article class="ni-plate"><div class="ni-plate-head"><span>MG-07 Crosshair</span></div><div class="ni-mg-stage"><div class="mg-cross"><b></b><b></b><b></b><b></b></div></div><p class="ni-mono dim">角标，非游戏准星</p></article>
+          <article class="ni-plate"><div class="ni-plate-head"><span>MG-08 Density code</span></div><div class="ni-mg-stage"><div class="mg-barcode"><i style="width:4px;margin-right:3px"></i><i style="width:2px;margin-right:1px"></i><i style="width:6px;margin-right:1px"></i><i style="width:2px;margin-right:3px"></i><i style="width:8px;margin-right:1px"></i><i style="width:2px;margin-right:1px"></i><i style="width:4px;margin-right:3px"></i><i style="width:6px"></i></div></div><p class="ni-mono dim">单位识别，非真条码</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ni-section" id="sec-materials">
+      <div class="ni-wrap">
+        <div class="ni-sec-head">
+          <span class="ni-sec-id">03 / MATERIALS</span>
+          <div>
+            <h2 class="ni-h2">Deployable parts</h2>
+            <p class="ni-body dim" style="margin:8px 0 0">每块标本只用 1 个微图形家族。图形标 + 字标 + 元数据条。</p>
+          </div>
+          <span class="ni-src invented">[Invented]</span>
+        </div>
+        <article class="ni-plate" style="margin-bottom:16px">
+          <div class="ni-plate-head"><span>Type lockup</span><span>MAT-01</span></div>
+          <div class="ni-lockup">
+            <div class="ni-lockup-bar"><span>Status: Active</span><span>Field lab</span></div>
+            <div class="ni-lockup-body">
+              <svg class="ni-mark" width="72" height="72" viewBox="0 0 72 72" aria-hidden="true">
+                <polygon points="22,4 50,4 68,22 68,50 50,68 22,68 4,50 4,22" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <text x="36" y="44" text-anchor="middle" fill="currentColor" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="28">04</text>
+              </svg>
+              <div class="ni-lockup-word">Orbital<small>Sys-01 · Continuous build</small></div>
+            </div>
+            <div class="ni-lockup-bar bottom"><span>Unit NI-04</span><span>Rev 1.4</span></div>
+          </div>
+        </article>
+        <article class="ni-plate" style="margin-bottom:16px">
+          <div class="ni-plate-head"><span>Status stamps</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span class="ni-stamp ghost">Standby</span>
+            <span class="ni-stamp solid">Active</span>
+            <span class="ni-stamp nvg">Online</span>
+            <span class="ni-stamp warn">Degraded</span>
+            <span class="ni-stamp alert">Alert</span>
+            <span class="ni-stamp ghost" style="opacity:.45;border-style:dashed">Offline</span>
+          </div>
+        </article>
+        <article class="ni-plate" style="margin-bottom:16px">
+          <div class="ni-plate-head"><span>Spec sheet</span></div>
+          <div class="ni-spec">
+            <aside class="ni-spec-rail">
+              <div class="ni-mono">DOC NI-04<br/>REV 1.4</div>
+              <span class="ni-stamp solid">Active</span>
+            </aside>
+            <div class="ni-spec-body">
+              <h3 class="ni-h3">Assembly record</h3>
+              <p class="ni-body dim" style="margin:0">为栈下面的基础设施设计，不为栈上面的消费界面设计。</p>
+              <div class="ni-meter"><div class="ni-mono">Load / 78%</div><div class="ni-meter-track"><i style="width:78%"></i></div></div>
+            </div>
+          </div>
+        </article>
+        <article class="ni-plate">
+          <div class="ni-plate-head"><span>Packaging panel</span></div>
+          <div class="ni-pack">
+            <div class="ni-pack-cut"></div>
+            <div class="ni-mono">Industrial packaging unit</div>
+            <div class="ni-pack-type">
+              <svg viewBox="0 0 300 168" width="100%" height="140" aria-hidden="true">
+                <path d="M8 12 H52 V100 L120 12 H164 V156 H120 V68 L52 156 H8 Z" fill="currentColor"/>
+                <path d="M196 12 H268 L280 24 V144 L268 156 H196 L184 144 V24 Z" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="ni-section" id="sec-states">
+      <div class="ni-wrap">
+        <div class="ni-sec-head">
+          <span class="ni-sec-id">04 / STATES + MOTION</span>
+          <div>
+            <h2 class="ni-h2">Operational UI</h2>
+            <p class="ni-body dim" style="margin:8px 0 0">语言要能跑界面。动作只表达状态改变。无 bounce、无 spring。</p>
+          </div>
+          <span class="ni-src invented">[Invented]</span>
+        </div>
+        <div class="ni-btn-grid" style="margin-bottom:24px">
+          <button type="button" class="ni-btn">Default</button>
+          <button type="button" class="ni-btn ghost">Ghost</button>
+          <button type="button" class="ni-btn is-selected">Selected</button>
+          <button type="button" class="ni-btn" disabled>Disabled</button>
+          <button type="button" class="ni-btn warn">Warning</button>
+          <button type="button" class="ni-btn offline">Offline</button>
+        </div>
+        <div class="ni-sys">
+          <div class="ni-sys-row" data-state="online"><i class="ni-dot"></i><span>G-01</span><span class="ni-dim">Survey</span><span>Status: Online</span></div>
+          <div class="ni-sys-row" data-state="standby"><i class="ni-dot"></i><span>G-03</span><span class="ni-dim">Reserve</span><span>Status: Standby</span></div>
+          <div class="ni-sys-row" data-state="degraded"><i class="ni-dot"></i><span>G-04</span><span class="ni-dim">Thermal</span><span>Status: Degraded</span></div>
+          <div class="ni-sys-row" data-state="offline"><i class="ni-dot"></i><span>G-05</span><span class="ni-dim">Remote</span><span>Status: Offline</span></div>
+        </div>
+        <p class="ni-mono dim" style="margin-top:20px">--motion-fast 80ms · --motion-base 140ms · --motion-slow 220ms · --ease-mechanical</p>
+        <button type="button" class="ni-btn ghost" id="lock-btn" style="margin-top:12px">Status: Standby</button>
+      </div>
+    </section>
+
+    <section class="ni-section" id="sec-voice">
+      <div class="ni-wrap">
+        <div class="ni-sec-head">
+          <span class="ni-sec-id">05 / VOICE + RULES</span>
+          <div>
+            <h2 class="ni-h2">Operating language</h2>
+            <p class="ni-body dim" style="margin:8px 0 0">用运行中文件的语气，不用创业口号。</p>
+          </div>
+          <span class="ni-src observed">[Observed]</span>
+        </div>
+        <div class="ni-grid-2">
+          <ul class="ni-voice-list">
+            <li>STATUS: ACTIVE DEPLOYMENT</li>
+            <li>DATUM / WGS 84</li>
+            <li>UNIT ID: NI-04</li>
+            <li>FIELD OPERATION: ACTIVE</li>
+            <li>FUNCTION OVER DECORATION</li>
+          </ul>
+          <ul class="ni-voice-list">
+            <li style="text-decoration:line-through;color:var(--text-muted)">reimagine</li>
+            <li style="text-decoration:line-through;color:var(--text-muted)">seamless</li>
+            <li style="text-decoration:line-through;color:var(--text-muted)">next-gen synergy</li>
+            <li style="text-decoration:line-through;color:var(--text-muted)">unlock the future</li>
+          </ul>
+        </div>
+        <p class="ni-accept">If it cannot print on a spec plate, a carton side, or a work jacket, it is not done.</p>
+      </div>
+    </section>
+
+    <section class="ni-section" id="sec-validate">
+      <div class="ni-wrap">
+        <div class="ni-sec-head">
+          <span class="ni-sec-id">06 / SYSTEM VALIDATION</span>
+          <div>
+            <h2 class="ni-h2">Design test</h2>
+            <p class="ni-body dim" style="margin:8px 0 0">顶栏 Signal / Anno / Gray 是活测试。关掉强调色和微图形后，网格与字体仍应成立。</p>
+          </div>
+          <span class="ni-src invented">[Invented]</span>
+        </div>
+        <ul class="ni-check">
+          <li><b>01 · Signal off</b><span>去掉安全橙。构图还像工程文件吗？</span></li>
+          <li><b>02 · Anno off</b><span>去掉微图形。字号、间距、对齐是否仍能独立成立？</span></li>
+          <li><b>03 · Purpose</b><span>每个装饰能否解释操作或信息用途？只为好看的，删。</span></li>
+          <li><b>04 · Grayscale</b><span>Gray 模式下系统是否仍可读、可部署？</span></li>
+          <li><b>05 · Field object</b><span>能否印在铭牌、纸箱、机台界面或工作夹克上？</span></li>
+        </ul>
+        <p class="ni-principle">Structure first / Signal second / Decoration last</p>
+        <p class="ni-mono dim" style="margin-top:12px">If it looks decorated, remove something. If it looks engineered, keep going.</p>
+      </div>
+    </section>
+
+    <section class="ni-section" id="sec-root">
+      <div class="ni-wrap">
+        <div class="ni-sec-head">
+          <span class="ni-sec-id">07 / :ROOT</span>
+          <div>
+            <h2 class="ni-h2">Copy-paste tokens</h2>
+            <p class="ni-body dim" style="margin:8px 0 0">Hex 为 [Derived] 量测，不是原作者官方规格。生产项目可换 Saans。</p>
+          </div>
+          <button type="button" class="ni-btn" id="copy-root">Copy :root</button>
+        </div>
+        <pre class="ni-code" id="root-dump">:root {
+  /* SPEC/NI-04 — Neo Industrial tokens
+     STRUCTURE FIRST / SIGNAL SECOND / DECORATION LAST
+     Production typeface: Saans (proportional / semi-mono / mono). Kit substitutes below. */
+
+  /* ── PRIMITIVES ──
+     [DERIVED] hex from Field (black/white/safety) and Fabrication (rust/sand/brown) atmospheres.
+     [OBSERVED] one high-visibility color + black/charcoal/paper. Do not add a second accent. */
+  --ni-black: #0B0B0B;
+  --ni-ink: #101010;
+  --ni-charcoal: #161616;
+  --ni-steel: #2B2B2B;
+  --ni-white: #F6F5F1;
+  --ni-paper: #F3EEE2;
+  --ni-cream: #EDE6D2;
+  --ni-sand: #C9B48A;
+  --ni-fog: #B7B3A8;
+  --ni-mute: #7B776E;
+
+  --ni-safety: #FF4C00;
+  --ni-safety-2: #FF7A18;
+  --ni-amber: #E39B24;
+  --ni-hivis: #F0C14B;
+  --ni-rust: #B84312;
+  --ni-brown: #2A1A12;
+  --ni-nvg: #9CFF6A;
+  --ni-alert: #FF2E2E;
+  --ni-datum: #2E62F0;
+
+  --ni-line: rgba(246, 245, 241, 0.16);
+  --ni-line-strong: rgba(246, 245, 241, 0.32);
+
+  /* ── SEMANTIC ── [INVENTED] portable layer. Themes remap these; components never read primitives. */
+  --surface-primary: var(--ni-black);
+  --surface-secondary: var(--ni-charcoal);
+  --surface-elevated: var(--ni-ink);
+  --surface-paper: var(--ni-paper);
+
+  --text-primary: var(--ni-white);
+  --text-secondary: var(--ni-fog);
+  --text-muted: var(--ni-mute);
+
+  --border-default: var(--ni-line);
+  --border-strong: var(--ni-line-strong);
+
+  --signal-primary: var(--ni-safety);
+  --signal-primary-fg: var(--ni-black);
+  --signal-active: var(--ni-nvg);
+  --signal-alert: var(--ni-alert);
+  --signal-warn: var(--ni-amber);
+
+  /* ── TYPE ── [DERIVED] kit substitutes. [OBSERVED] one family, hierarchy by scale/space/align. */
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-title: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+  --font-serif: "Source Serif 4", "Times New Roman", serif;
+
+  /* ── SPACE / GRID ── [DERIVED] 4-base scale; 24/48 visible grid inferred from repeated layouts. */
+  --ni-space-1: 4px;
+  --ni-space-2: 8px;
+  --ni-space-3: 12px;
+  --ni-space-4: 16px;
+  --ni-space-5: 24px;
+  --ni-space-6: 32px;
+  --ni-space-7: 48px;
+  --ni-space-8: 64px;
+  --ni-space-9: 96px;
+  --ni-grid: 48px;
+  --ni-grid-fine: 24px;
+  --ni-radius: 0px;
+  --ni-radius-max: 2px;
+  --ni-hairline: 1px;
+  --ni-dash: 4px 3px;
+  --ni-stripe-bar: 3px;
+  --ni-stripe-gap: 2px;
+  --ni-track-stamp: 0.14em;
+  --ni-track-display: -0.02em;
+  --ni-leading-display: 0.88;
+
+  /* ── MOTION ── [INVENTED] mechanical, no bounce / spring / luxury ease. */
+  --motion-fast: 80ms;
+  --motion-base: 140ms;
+  --motion-slow: 220ms;
+  --ease-mechanical: cubic-bezier(0.2, 0, 0, 1);
+}</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ni-foot">
+    <div class="ni-wrap">
+      <p class="ni-foot-line">Function over decoration</p>
+      <p class="ni-mono" style="margin-top:16px">SPEC/NI-04 · Built for field use · Approach: restrained / operational / grounded</p>
+    </div>
+  </footer>
+  <div class="ni-toast" id="toast" hidden>Copied</div>
+</div>
+<script>
+(function () {
+  var page = document.getElementById("page");
+  var toast = document.getElementById("toast");
+  var tId;
+  function ping(msg) {
+    toast.hidden = false;
+    toast.textContent = "Copied · " + msg;
+    clearTimeout(tId);
+    tId = setTimeout(function () { toast.hidden = true; }, 1400);
+  }
+  function copy(text, id) {
+    navigator.clipboard.writeText(text).then(function () { ping(id); });
+  }
+  var days = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+  var months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+  function tick() {
+    var d = new Date();
+    document.getElementById("clk-zulu").textContent =
+      String(d.getUTCHours()).padStart(2,"0") + ":" +
+      String(d.getUTCMinutes()).padStart(2,"0") + ":" +
+      String(d.getUTCSeconds()).padStart(2,"0") + " Z";
+    document.getElementById("clk-date").textContent =
+      days[d.getUTCDay()] + " " + String(d.getUTCDate()).padStart(2,"0") + " " +
+      months[d.getUTCMonth()] + " " + String(d.getUTCFullYear()).slice(2);
+  }
+  tick();
+  setInterval(tick, 1000);
+  var html = document.documentElement;
+  document.querySelectorAll("[data-atmos]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      html.setAttribute("data-atmos", btn.getAttribute("data-atmos"));
+      document.querySelectorAll("[data-atmos]").forEach(function (b) {
+        b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+      });
+    });
+  });
+  document.getElementById("grid-btn").addEventListener("click", function () {
+    var on = page.classList.toggle("grid-on");
+    this.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+  function flag(id, attr, onVal, offVal) {
+    document.getElementById(id).addEventListener("click", function () {
+      var on = this.getAttribute("aria-pressed") !== "true";
+      this.setAttribute("aria-pressed", on ? "true" : "false");
+      html.setAttribute(attr, on ? onVal : offVal);
+    });
+  }
+  flag("btn-signal", "data-signal", "on", "off");
+  flag("btn-micro", "data-micro", "on", "off");
+  document.getElementById("btn-gray").addEventListener("click", function () {
+    var on = this.getAttribute("aria-pressed") !== "true";
+    this.setAttribute("aria-pressed", on ? "true" : "false");
+    html.setAttribute("data-chroma", on ? "gray" : "color");
+  });
+  document.querySelectorAll(".ni-swatch").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      copy(btn.getAttribute("data-copy"), btn.getAttribute("data-id"));
+    });
+  });
+  document.getElementById("copy-root").addEventListener("click", function () {
+    copy(document.getElementById("root-dump").textContent, "root");
+  });
+  var lock = document.getElementById("lock-btn");
+  var locked = false;
+  lock.addEventListener("click", function () {
+    locked = !locked;
+    lock.textContent = locked ? "Status: Active" : "Status: Standby";
+    lock.className = "ni-btn " + (locked ? "is-selected" : "ghost");
+  });
+})();
+</script>
+</body>
+</html>

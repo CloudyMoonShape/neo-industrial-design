@@ -1,0 +1,10 @@
+/* SPEC/NI-04 — Motion
+   Mechanical only: snap / wipe / lock. No spring, no bounce, no luxury ease, no parallax. */
+:root {
+  --motion-fast: 80ms; /* @kind other */
+  --motion-base: 140ms; /* @kind other */
+  --motion-slow: 220ms; /* @kind other */
+  --ease-mechanical: cubic-bezier(0.2, 0, 0, 1); /* @kind other */
+  --press-scale: 0.98; /* @kind other */
+  --disabled-opacity: 0.38; /* @kind other */
+}

@@ -1,0 +1,23 @@
+<!-- @dsCard group="Components" viewport="700x560" name="Structure" subtitle="CommandHeader · SectionHead · Plate · GridField · Corners · CoordBlock · UnitId · Heading · Label" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{padding:16px}.lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin:0 0 6px}.g{display:grid;gap:16px}</style></head><body><div id="root"></div>
+<script type="text/babel">
+const { Button, Stamp, SegmentedControl, Meter, KeyValue, StatusList, Toast, Heading, Label, CommandHeader, SectionHead, Plate, Corners, GridField, CoordBlock, UnitId, Mark, Lockup, HudPanel, SpecSheet, PackPanel, Micrographic } = window.NeoIndustrialDesignSystem_fae892;
+
+function App(){
+  return <div className="g">
+    <CommandHeader sticky={false} code="SPEC/NI-04" sub="Field Manual" meta={[{key:"Date",value:"WED 02 SEP 26"},{key:"Clock",value:"17:03:08 Z"},{key:"Status",value:"Field testing"}]} actions={<Button size="sm" variant="ghost">Export HTML</Button>} nav={[{href:"#a",label:"01 Tokens"},{href:"#b",label:"02 Micrographics"},{href:"#c",label:"03 Materials"}]} activeHref="#a" style={{marginInline:-16}}/>
+    <SectionHead id="03 / MATERIALS" title="Deployable parts" description="Physical specimens. Mark + wordmark + metadata bars are a locked combination." aside={<Stamp size="sm">Print / HUD / Carton</Stamp>} style={{marginBottom:0}}/>
+    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16}}>
+      <Plate label="Plate" meta="MAT-00"><Heading level="h3">Assembly record</Heading><p style={{margin:"8px 0 0",color:"var(--text-secondary)",fontSize:14}}>Heading h3 inside the only card the system has.</p><Label size="meta" tone="secondary" style={{display:"block",marginTop:10}}>Label · meta · secondary</Label><Label tone="signal" style={{display:"block"}}>Ref: [ Orbital-Sys-01 ]</Label></Plate>
+      <GridField minor="24px" style={{border:"var(--hairline) solid var(--border-strong)",minHeight:170}}><Corners inset={10}/><div style={{padding:24,display:"flex",justifyContent:"space-between",alignItems:"end",height:170}}><CoordBlock direction="column" items={[{key:"Datum",value:"WGS 84"},{key:"Lat",value:"40.7128 N"},{key:"Proj",value:"UTM 18N"}]}/><UnitId>G-01</UnitId></div></GridField>
+    </div>
+    <div style={{display:"flex",gap:24,alignItems:"end"}}><Heading level="h1" style={{fontSize:64}}>Heading</Heading><Heading level="h2">Operational grid</Heading><Heading level="h3">Assembly</Heading><Heading level="h4" style={{color:"var(--text-secondary)"}}>Subsystem</Heading></div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script></body></html>

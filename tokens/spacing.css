@@ -1,0 +1,35 @@
+/* SPEC/NI-04 — Space / Grid / Edge
+   Base-4 scale. The visible grid is part of the style, not a construction aid.
+   Radius is 0 (max 2px on print). No soft shadows — depth is a 1px hairline or a dashed cut. */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  --grid-major: 48px;
+  --grid-minor: 24px;
+  --content-max: 1280px;
+  --gutter: 24px;
+  --gutter-mobile: 16px;
+
+  --radius: 0px;
+  --radius-max: 2px;
+  --hairline: 1px;
+  --dash: 4px 3px; /* @kind other */ /* carton cut / unfinished state */
+  --stripe-bar: 3px;        /* index-bar modulus */
+  --stripe-gap: 2px;
+  --chamfer: 12px;          /* plate corner cut */
+  --fiducial: 18px;         /* corner-bracket arm length */
+
+  --control-height: 44px;   /* command buttons, min hit target */
+  --control-height-sm: 36px;
+  --control-pad-x: 16px;
+  --stamp-pad: 6px 10px;
+  --plate-pad: 16px;
+}

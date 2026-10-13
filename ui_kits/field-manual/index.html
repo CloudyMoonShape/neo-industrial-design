@@ -1,0 +1,48 @@
+<!-- @dsCard group="Field Manual" viewport="1280x900" name="Field Manual — SPEC/NI-04" subtitle="Single-page manual: command header, hero, tokens, micrographics, materials, states, voice" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>SPEC/NI-04 — Field Manual</title>
+<link rel="icon" href="../../assets/mark-octagon.svg"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>.wrap{width:min(var(--content-max),calc(100% - 48px));margin-inline:auto}.sec{padding:64px 0 80px;border-top:var(--hairline) solid var(--border-default)}@media (max-width:900px){.wrap{width:calc(100% - 32px)}}</style>
+</head><body><div id="root"></div>
+<script type="text/babel" src="Hero.jsx"></script>
+<script type="text/babel" src="TokensSection.jsx"></script>
+<script type="text/babel" src="MaterialsSection.jsx"></script>
+<script type="text/babel" src="StatesSection.jsx"></script>
+<script type="text/babel">
+const { CommandHeader, SegmentedControl, Button, Toast } = window.NeoIndustrialDesignSystem_fae892;
+const DAYS = ["SUN","MON","TUE","WED","THU","FRI","SAT"], MONTHS = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+const p2 = (n) => String(n).padStart(2, "0");
+const fmtZulu = (d) => `${p2(d.getUTCHours())}:${p2(d.getUTCMinutes())}:${p2(d.getUTCSeconds())} Z`;
+const fmtDate = (d) => `${DAYS[d.getUTCDay()]} ${p2(d.getUTCDate())} ${MONTHS[d.getUTCMonth()]} ${String(d.getUTCFullYear()).slice(2)}`;
+const NAV = [{href:"#sec-tokens",label:"01 Tokens"},{href:"#sec-micro",label:"02 Micrographics"},{href:"#sec-materials",label:"03 Materials"},{href:"#sec-states",label:"04 States / Motion"},{href:"#sec-voice",label:"05 Voice"}];
+function App() {
+  const [now, setNow] = React.useState(() => new Date());
+  const [atmos, setAtmos] = React.useState(() => localStorage.getItem("ni04.atmos") || "field");
+  const [gridOn, setGridOn] = React.useState(true);
+  const [copied, setCopied] = React.useState(null);
+  const [active, setActive] = React.useState(NAV[0].href);
+  React.useEffect(() => { const id = setInterval(() => setNow(new Date()), 1000); return () => clearInterval(id); }, []);
+  React.useEffect(() => { document.documentElement.dataset.atmos = atmos; localStorage.setItem("ni04.atmos", atmos); }, [atmos]);
+  const copy = async (text, id) => { try { await navigator.clipboard.writeText(text); } catch {} setCopied(id); setTimeout(() => setCopied((c) => (c === id ? null : c)), 1400); };
+  const go = (item) => { setActive(item.href); const el = document.querySelector(item.href); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 96, behavior: "auto" }); };
+  const date = fmtDate(now), zulu = fmtZulu(now);
+  return (
+    <div style={{ minHeight: "100vh", background: "var(--surface-primary)", color: "var(--text-primary)" }}>
+      <CommandHeader code="SPEC/NI-04" sub="Field Manual" nav={NAV} activeHref={active} onNavigate={go}
+        meta={[{ key: "Date", value: date }, { key: "Clock", value: zulu }, { key: "Sector", value: "AI / Robotics / Defense / Industry" }, { key: "Status", value: "Field testing" }]}
+        actions={<><SegmentedControl aria-label="Atmosphere" options={[{ value: "field", label: "Field" }, { value: "fab", label: "Fabrication" }]} value={atmos} onChange={setAtmos} /><SegmentedControl aria-label="Grid" multiple options={[{ value: "grid", label: gridOn ? "Grid on" : "Grid off" }]} value={gridOn ? ["grid"] : []} onChange={(v) => setGridOn(v.includes("grid"))} /><Button size="sm" variant="ghost" onClick={() => copy(":root { /* see tokens/*.css */ }", "root")}>Copy :root</Button></>} />
+      <Hero gridOn={gridOn} />
+      <main>
+        <TokensSection copy={copy} copied={copied} gridOn={gridOn} />
+        <MaterialsSection date={date} zulu={zulu} />
+        <StatesSection />
+      </main>
+      <Toast open={!!copied}>Copied · {copied}</Toast>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script></body></html>

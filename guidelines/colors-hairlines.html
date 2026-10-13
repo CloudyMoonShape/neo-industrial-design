@@ -1,0 +1,14 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Hairlines" subtitle="No shadows. Depth is a 1px line at 16% or 32%, or a dashed cut for unfinished / carton states." -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css"><style>
+body{padding:16px;background:var(--surface-primary);color:var(--text-primary)}
+.row{display:flex;gap:8px}.col{display:grid;gap:8px}
+.mono{font-family:var(--font-mono);font-size:var(--text-meta);letter-spacing:var(--track-stamp);text-transform:uppercase;color:var(--text-secondary);font-variant-numeric:tabular-nums}
+.sw{flex:1;border:var(--hairline) solid var(--border-strong);background:var(--surface-elevated)}
+.chip{height:56px;border-bottom:var(--hairline) solid var(--border-default)}
+.meta{padding:8px 10px;display:grid;gap:2px}.meta b{font-family:var(--font-mono);font-size:10px;letter-spacing:var(--track-stamp);font-weight:500;color:var(--text-primary)}.meta i{font-style:normal;font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;color:var(--text-muted)}
+</style></head><body><div class="row" style="align-items:stretch;height:110px">
+<div style="flex:1;border:var(--hairline) solid var(--border-default);padding:10px"><span class="mono">--border-default · 16%</span></div>
+<div style="flex:1;border:var(--hairline) solid var(--border-strong);padding:10px"><span class="mono">--border-strong · 32%</span></div>
+<div style="flex:1;border:var(--hairline) dashed var(--border-strong);padding:10px"><span class="mono">dashed · unfinished</span></div>
+<div style="flex:1;border:var(--hairline) solid var(--text-primary);padding:10px"><span class="mono">solid ink · closed system</span></div>
+<div style="flex:1;border:var(--hairline) solid var(--signal-primary);padding:10px"><span class="mono" style="color:var(--signal-primary)">signal · selected</span></div></div></body></html>

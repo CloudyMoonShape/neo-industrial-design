@@ -1,0 +1,10 @@
+/* Body reset + link colors. Components style themselves inline from tokens. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { margin: 0; background: var(--surface-primary); color: var(--text-primary); font-family: var(--font-body); font-size: var(--text-body); line-height: var(--leading-body); text-wrap: pretty; }
+button, input, select, textarea { font: inherit; color: inherit; }
+a { color: var(--text-primary); text-decoration: none; transition: color var(--motion-base) var(--ease-mechanical); }
+a:hover { color: var(--signal-primary); }
+::selection { background: var(--selection-bg); color: var(--selection-fg); }
+:focus-visible { outline: var(--hairline) solid var(--focus-ring); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }

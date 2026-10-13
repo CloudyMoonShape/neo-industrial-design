@@ -1,0 +1,46 @@
+/* SPEC/NI-04 — Type
+   One family per job. Hierarchy comes from scale / space / alignment, never from a second decorative face.
+   Display + title share Barlow Condensed; body is Plex Sans; every operational label is Plex Mono, uppercase, tracked. */
+:root {
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-title: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Courier New", monospace;
+
+  /* weights */
+  --weight-display: 800;
+  --weight-title: 700;
+  --weight-body: 400;
+  --weight-body-strong: 500;
+  --weight-mono: 500;
+
+  /* scale (px) */
+  --text-hero: clamp(64px, 12vw, 128px); /* display, uppercase */
+  --text-unit: clamp(48px, 8vw, 96px);   /* unit identifiers: G-01 */
+  --text-h1: clamp(56px, 8vw, 96px);
+  --text-h2: clamp(28px, 4vw, 42px);
+  --text-h3: 22px;
+  --text-h4: 18px;
+  --text-body: 15px;
+  --text-body-sm: 14px;
+  --text-caption: 12px;
+  --text-stamp: 11px;   /* stamps, buttons, coordinates */
+  --text-meta: 10px;    /* header meta, nav, plate labels */
+  --text-micro: 9px;    /* kv labels, provenance */
+
+  /* leading */
+  --leading-display: 0.86;
+  --leading-title: 0.92;
+  --leading-tight: 1;
+  --leading-body: 1.5;
+  --leading-body-loose: 1.55;
+  --leading-mono: 1.7;
+
+  /* tracking */
+  --track-display: -0.02em;
+  --track-title: 0.01em;
+  --track-h3: 0.04em;
+  --track-stamp: 0.14em;
+  --track-mono: 0.08em;
+  --track-mono-wide: 0.18em;
+}
